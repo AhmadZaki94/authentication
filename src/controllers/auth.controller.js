@@ -67,7 +67,23 @@ const login = async (req, res) => {
     }
 };
 
-module.exports = {register, login}
+
+// for login with email 
+const email = async(req, res) => {
+    try{
+        let user = await User.findOne({email: req.body.email}).lean().exec();
+
+        if(!user) return res.status(400).send("Please try another email or password");
+
+        const token = newToken(user);
+        return res.status(200).send({user, token});
+    }
+    catch(err){
+        res.status(500).send({message: err.message});
+    }
+}
+
+module.exports = {register, login, email};
 
 
 

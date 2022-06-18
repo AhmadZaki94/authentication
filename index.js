@@ -8,7 +8,7 @@ const productController = require('./src/controllers/product.controller');
 
 const connect = require('./src/configs/db');
 
-const {register, login} = require('./src/controllers/auth.controller');
+const {register, login, email} = require('./src/controllers/auth.controller');
  
 const app = express();
 
@@ -19,6 +19,7 @@ app.post('/register', register)
 
 //login
 app.post("/login", login)
+app.post("/email", email);
 
 
 
