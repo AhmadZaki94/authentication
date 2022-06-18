@@ -1,5 +1,7 @@
 const express = require('express');
 
+require('dotenv').config();
+
 const userController = require('./src/controllers/user.controller');
 
 const productController = require('./src/controllers/product.controller');
